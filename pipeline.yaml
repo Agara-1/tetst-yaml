@@ -1,0 +1,22 @@
+name: Weather Report
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  weather:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch weather
+        run: |
+        
+          CITY="London"
+          # Použití proměnné v curl pomocí ${CITY}
+          WEATHER=$(curl -s "wttr.in/${CITY}?format=3")     
+          echo "Weather in $CITY: $WEATHER"
+
+          echo "## $CITY Weather Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> $WEATHER" >> $GITHUB_STEP_SUMMARY
