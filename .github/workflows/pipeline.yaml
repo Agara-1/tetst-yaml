@@ -15,6 +15,7 @@ jobs:
         run: |
         
           CITY="London"
+          # Použití proměnné v curl pomocí ${CITY}
           WEATHER=$(curl -s "wttr.in/${CITY}?format=3")     
           echo "Weather in $CITY: $WEATHER"
 
