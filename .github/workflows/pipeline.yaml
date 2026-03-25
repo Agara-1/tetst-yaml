@@ -10,14 +10,24 @@ on:
 jobs:
   weather:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        city: ["London", "Prague", "New York", "Tokyo"]
+
     steps:
       - name: Fetch weather
         run: |
-          CITY="London"
-          # Použití proměnné v curl pomocí ${CITY}
+      
+          CITY="${{ matrix.city }}"
+          
+
           WEATHER=$(curl -s "wttr.in/${CITY}?format=3")     
           echo "Weather in $CITY: $WEATHER"
 
+ 
           echo "## $CITY Weather Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "> $WEATHER" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+
+          
