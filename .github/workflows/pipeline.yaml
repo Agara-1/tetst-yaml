@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        city: ["London", "Prague", "New York", "Tokyo"]
+        city: ["London", "Prague", "Berlin", "Tokyo"]
 
     steps:
       - name: Fetch weather
