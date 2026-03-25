@@ -30,4 +30,12 @@ jobs:
           echo "> $WEATHER" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
 
+          echo "$CITY: $WEATHER >> weather.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: weather-${{matrix.city}}
+          path: weather.txt 
+
           
