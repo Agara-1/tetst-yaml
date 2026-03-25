@@ -2,7 +2,7 @@ name: Weather Report
 
 on:
   schedule:
-    -cron "0 9 * * * "
+    -cron:"0 9 * * * "
   push:
     branches: [main]
   workflow_dispatch:
@@ -15,7 +15,6 @@ jobs:
         run: |
         
           CITY="London"
-          # Použití proměnné v curl pomocí ${CITY}
           WEATHER=$(curl -s "wttr.in/${CITY}?format=3")     
           echo "Weather in $CITY: $WEATHER"
 
